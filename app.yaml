@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/patilvishal1683/chaos_argo_workflow
-    targetRevision: HEAD
+    repoURL: https://github.com/patilvishal1683/chaos_argo_workflow.git
+    targetRevision: master
     path: experiments
   destination:
-    server: https://6A327EB0F757088CBC556AE10748C106.gr7.us-east-1.eks.amazonaws.com
+    server: https://kubernetes.default.svc
     namespace: default

@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-deploy-secret
+  namespace: argocd
+type: Opaque
+data:
+  privateKey: | 
+    LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFB
+    QUFBQ21GbGN6STFOaTFqZEhJQUFBQUdZbU55ZVhCMEFBQUFHQUFBQUJEaVhwWiszQgp5Vy9PRWdN
+    S3JvRlA0ekFBQUFFQUFBQUFFQUFBQXpBQUFBQzNOemFDMWxaREkxTlRFNUFBQUFJQXNLanMzK2Zv
+    c0JLRXQ4CmcrSFpMUlBJZ0ZXQ0hTYjE0OVlpUkFQTTNHU2ZBQUFBb0dzeCtGT0lsM1QvalVNbHpT
+    MnVVb0RQWHRYRllReWkvajNORSsKWHFIeHJsSklxdG9Wa1B4diszNWN6VzRWcEY1TjV6ZFBORGNQ
+    YmVIR0loWWl0VE9JVDlBSTJJRmZpaUU2dUZIdis4VllwZgpEcHdIK3Z4ZHZ3YTBjWG9RY3BnUWFZ
+    ZGFKVkVPOXBNVFBMOGgwejVqZ2VrNHBlaXRFMHhVcThyTDk0cEM1bUY1QVVWaGJXCkhnbmJmdCtx
+    TXZDN3duV0NQdmVBUzExOTgvY2RHZTRUcXJoamc9Ci0tLS0tRU5EIE9QRU5TU0ggUFJJVkFURSBL
+    RVktLS0tLQo=
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  repositories: |
+    - url: git@github.com:patilvishal1683/chaos_argo_workflow.git
+      sshPrivateKeySecret:
+        name: my-deploy-secret
+        key: privateKey
