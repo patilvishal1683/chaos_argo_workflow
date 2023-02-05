@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: chaos-demo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/patilvishal1683/chaos_argo_workflow
+    targetRevision: HEAD
+    path: experiments
+  destination:
+    server: https://6A327EB0F757088CBC556AE10748C106.gr7.us-east-1.eks.amazonaws.com
+    namespace: default
