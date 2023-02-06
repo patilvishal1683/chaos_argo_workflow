@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment-2-pod
+  annotations:
+    litmuschaos.io/gitops: "true"
+    litmuschaos.io/workflow: "704f4621-d49f-4f7a-ba5b-0a8c9593403f"
   labels:
     app: nginx-2
 spec:
@@ -16,6 +19,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.14.2
+        image: nginx:1.18
         ports:
         - containerPort: 80

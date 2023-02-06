@@ -11,5 +11,5 @@ spec:
     value: "1"
     operator: EqualTo
   - key: "spec.template.spec.containers[0].image"
-    value: "nginx:1.18"
+    value: "nginx:1.14.2"
     operator: EqualTo
