@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -9,6 +10,25 @@ spec:
     repoURL: https://github.com/patilvishal1683/chaos_argo_workflow.git
     targetRevision: master
     path: experiments
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: litmus-chaos
+  namespace: argocd
+spec:
+  project: litmus
+  source:
+    helm:
+      parameters:
+        - name: namespace
+          value: 'litmus'
+    repoURL: https://github.com/patilvishal1683/chaos_argo_workflow.git
+    targetRevision: master
+    path: litmus
   destination:
     server: https://kubernetes.default.svc
     namespace: default
