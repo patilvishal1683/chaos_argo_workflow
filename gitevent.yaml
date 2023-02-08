@@ -1,0 +1,24 @@
+# Info on GitHub Webhook: https://developer.github.com/v3/repos/hooks/#create-a-hook
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: github
+spec:
+  github:
+    example:
+      repositories:
+        - owner: patilvishal1683
+          names:
+            - chaos_argo_workflow
+      webhook:
+        endpoint: /push
+        port: "12000"
+        method: POST
+        url: events.sbx-000094.sause1.bakerhughes.com
+      events:
+        - "push"
+      apiToken:
+        name: github-access
+      insecure: true
+      active: true
+      contentType: application/json
