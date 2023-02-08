@@ -3,9 +3,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: EventSource
 metadata:
   name: github
+
 spec:
   github:
-    example:
+    push:
+      namespace: argo-events
       repositories:
         - owner: patilvishal1683
           names:
@@ -21,4 +23,5 @@ spec:
         name: github-access
       insecure: true
       active: true
-      contentType: application/json
+      contentType: json
+
